@@ -1,0 +1,31 @@
+<h1>Edit Post</h1>
+
+  <form class="" action="<%= post_url(@post) %>" method="post">
+    <%= auth_token %>
+    <input type="hidden" name="_method" value="patch">
+    
+    <label>Title
+    <input type="text" name="post[title]" value="<%= @post.title %>">
+    </label>
+    
+    
+    <label>URL
+    <input type="text" name="post[url]" value="<%= @post.url %>">
+    </label>
+    
+    <label>Content
+    <input type="textarea" name="post[content]" value="<%= @post.content %>">
+    </label>
+    
+    <% Sub.all.each do |sub| %>
+    <label> <%= sub.title %>
+      <input type="checkbox" 
+        name="post[sub_ids][]" 
+        value="<%= sub.id %>"
+        <%= "checked" if @post.sub_ids.include?(sub.id) %> >
+      </label>
+    <% end %>
+    
+    
+    <input type="submit" name="" value="Edit Post">
+  </form>

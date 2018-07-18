@@ -1,0 +1,11 @@
+<%= @sub.title %>
+<%= @sub.description %>
+<h5>Current Mod: <%= @sub.moderators.username %></h5> 
+<a href="<%= edit_sub_url(@sub) %>">Edit Sub</a>
+
+<form action="<%=sub_url(@sub)%>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" name="" value="Remove Sub">
+  
+</form>
